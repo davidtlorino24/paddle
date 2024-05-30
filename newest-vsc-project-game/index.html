@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Paddle Game</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <h1>NMBA'S PADDLE GAME</h1>
+  <canvas id="gameCanvas"></canvas>
+  <button id="restartButton">Restart</button>
+  <script src="game.js"></script>
+</body>
+
+<audio id="backgroundMusic" src="Paddle Game Hustle.mp3" loop></audio>
+<input type="range" id="volumeSlider" min="0" max="1" step="0.01" value="0.5">
+<script>
+  document.addEventListener('DOMContentLoaded', (event) => {
+    const backgroundMusic = document.getElementById('backgroundMusic');
+    const volumeSlider = document.getElementById('volumeSlider');
+
+    volumeSlider.addEventListener('input', (event) => {
+      backgroundMusic.volume = event.target.value;
+    });
+
+    document.body.addEventListener('click', () => {
+      backgroundMusic.play().catch(error => {
+        console.log('Music playback failed:', error);
+      });
+    }, { once: true });
+  });
+</script>
+
+</html>
